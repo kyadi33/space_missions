@@ -130,6 +130,7 @@ Boeing		 | 		       USA | 		136 |		      131 | 	       96 |
 US Air Force	 |		       USA |		161 |		      129 |	       80 |
 Martin Marietta	 |		       USA | 		114 |		      100 |	       87 |
 
+
 --- What are the top 10 companies with the most active rockets? 
 
 WITH current_status AS (
@@ -137,7 +138,7 @@ SELECT
     company_name,
     SUM(CASE WHEN rocket_status = 'Active' THEN 1 ELSE 0 END) AS active_rockets,
     SUM(CASE WHEN rocket_status = 'Retired' THEN 1 ELSE 0 END) AS retired_rockets,
-	COUNT(*) as rockets_launched
+    COUNT(*) as rockets_launched
 FROM
     rocket_data
 GROUP BY
@@ -152,6 +153,22 @@ SELECT company_name,
 	(active_rockets*100)/rockets_launched as active_rocket_percentage
 FROM current_status
 ORDER BY active_rocket_percentage DESC;
+
+--  Results:
+
+company_name | active_rockets | retired_rockets | rockets_launched | active_rocket_percentage |
+----------------------------------------------------------------------------------------------+
+Sea Launch   |		   36 |		     0 |		36 |			 100 |
+CASC	     | 		  211 |             40 |	       251 |			  84 |
+Northrop     | 		   63 |             20 |		83 |			  75 |
+ISRO	     |		   50 | 	    26 |		76 | 			  65 |
+ULA	     |		   87 |	            53 |	       140 | 			  62 |
+Roscosmos    | 		   32 |	            23 | 		55 |			  58 |
+Arianespace  | 		  114 |	           165 | 	       279 |		 	  40 |
+SpaceX	     |		   38 |  	    62 |	       100 | 			  38 |
+MHI	     | 		   32 |	            52 | 		84 | 			  38 |
+VKS RF	     |		   27 |  	   174 |	       201 | 			  13 |
+
 
 --- What day of the week has the highest success rate? 
 
