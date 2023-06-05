@@ -167,6 +167,64 @@ year | mission_count
 1969 |   103
 1973 | 	 103
 
+-- What 5 companies had the most successful launches in each of these ranges: 1957 - 1969, 1970 - 1999, and 2000-2020
+WITH launch_data AS (
+	SELECT 
+		company_name,
+		CASE
+			WHEN year >= 1957 AND year <= 1969 then '1957-1969'
+			WHEN year >= 1970 AND year <= 1999 THEN '1970-1999'
+			WHEN year >= 2000 AND year <= 2020 THEN '2000-2020'
+		END AS decade_range,
+		SUM(CASE WHEN status_mission = 'Success' THEN 1 ELSE 0 END) as successful_launches
+	FROM rocket_data
+	GROUP by 
+		company_name,
+		decade_range
+	)
+SELECT
+	decade_range,
+	row_num,
+	company_name,
+	successful_launches
+FROM (
+	SELECT
+	company_name,
+	decade_range,
+	successful_launches,
+	ROW_NUMBER() OVER (PARTITION BY decade_range ORDER BY successful_launches DESC) AS row_num
+	FROM launch_data
+	) ranked_data
+WHERE row_num <= 5
+ORDER by 
+	CASE
+		WHEN decade_range = '1957-1969' THEN 1
+		WHEN decade_range = '1970-1999' THEN 2
+		WHEN decade_range = '2000-2020' THEN 3
+	END,
+	successful_launches desc;
+
+--  Results:
+
+decade_range | row_num |	company_name | successful_launches |
+-------------------------------------------------------------------+
+1957-1969    |	     1 |           RVSN USSR |		       360 |
+1957-1969    |	     2 |        US Air Force |		       101 |
+1957-1969    |       3 |    General Dynamics |		       101 |
+1957-1969    |	     4 |	        NASA |		        42 |
+1957-1969    |	     5 |     Martin Marietta |		        10 |
+1970-1999    |	     1 |	   RVSN USSR |		      1254 |
+1970-1999    |	     2 |         Arianespace |		       108 |
+1970-1999    |	     3 |	        NASA |		       105 |
+1970-1999    |	     4 |    General Dynamics |		       102 |
+1970-1999    |       5 |	      VKS RF |		        99 |
+2000-2020    |	     1 |	        CASC |		       173 |
+2000-2020    |	     2 |         Arianespace |		       161 |
+2000-2020    |	     3 |                 ULA |		       139 |
+2000-2020    |	     4 |              SpaceX |		        94 |
+2000-2020    |	     5 |              VKS RF |		        89 |
+
+
 -- What month has the highest success rate?
 
 SELECT 
@@ -295,4 +353,5 @@ Wed	    |		 821 |		       752 |	       91 |
 Thu	    | 		 808 |		       728 |           90 |
 Fri	    | 		 772 |		       684 |	       88 |
 Sat	    |		 490 |		       432 |	       88 |
+
 
