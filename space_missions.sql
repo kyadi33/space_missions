@@ -9,29 +9,6 @@ launch_count |
 -------------+
 4324	     
 
-
--- During which years did the most launches occur?
-
-SELECT year,
-       COUNT(*) as mission_count
-FROM rocket_data
-GROUP BY year
-ORDER BY mission_count DESC
-LIMIT 10;
-
-year | mission_count
----------------------+
-1971 |	 119
-2018 |	 117
-1977 | 	 114
-1976 |	 113
-1975 | 	 113
-2019 |   109
-1970 |	 107
-1967 | 	 106
-1969 |   103
-1973 | 	 103
-
 -- How many rockets were launched from each country?
 /*
 note: this is where the rockets have been launched from, but the companies that are conducting these launches 
@@ -63,41 +40,7 @@ Australia	| 6
 North Korea	| 5
 South Korea	| 3
 Brazil		| 3
-Spain		| 2
-
-
---- How many successful, failed, partial failure, and prelaunch failures does each company have recorded?
-
-SELECT
-        company_name,
-	COUNT(*) as launch_count,
-        SUM(CASE WHEN status_mission = 'Success' THEN 1 ELSE 0 END) AS successful_launches,
-        SUM(CASE WHEN status_mission = 'Failure' THEN 1 ELSE 0 END) AS failed_launches,
-	SUM(CASE WHEN status_mission = 'Partial Failure' THEN 1 ELSE 0 END) AS partial_failure,
-        SUM(CASE WHEN status_mission = 'Prelaunch Failure' THEN 1 ELSE 0 END) AS prelaunch_failure
-FROM
-        rocket_data
-GROUP BY
-	company_name
-ORDER BY 
-	launch_count DESC
-LIMIT 10;
-
---  Results:
-
-company_name		| launch_count  | successful_launches | failed_launches | partial_failure | prelaunch_failure |
-----------------------------------------------------------------------------------------------------------------------+
-RVSN USSR		|	   1777 | 	        1614 |		    121 |	       41 |		    1 |
-Arianespace		|	    279 | 		 269 |		      7 |		3 |		    0 |	
-CASC			| 	    251 | 		 231 |		     14 |		6 |		    0 | 
-General Dynamics	|	    251 |		 203 | 	   	     37 |	       11 |		    0 |
-NASA			|	    203 | 		 186 | 	   	     11 |		6 |		    0 |
-VKS RF			| 	    201 | 		 188 |		      7 | 		6 |		    0 |
-US Air Force		|	    161 | 		 129 | 	   	     30 | 		2 |		    0 |
-ULA			|	    140 | 		 139 | 	   	      0 | 		1 |		    0 |
-Boeing			|	    136 | 		 131 | 	   	      3 | 		2 |		    0 |
-Martin Marietta		| 	    114	| 		 100 | 	   	     11 | 		3 |		    0 |
-     	
+Spain		| 2     
     
 --- What are the top 10 companies with the most successful launches? What are their success rates?
 
@@ -170,45 +113,100 @@ MHI	     | 		   32 |	            52 | 		84 | 			  38 |
 VKS RF	     |		   27 |  	   174 |	       201 | 			  13 |
 
 
---- What day of the week has the highest success rate? 
+--- How many successful, failed, partial failure, and prelaunch failures does each company have recorded?
 
-WITH launch_stats AS (
-    SELECT 
-        day_of_week,
-        COUNT(*) as total_launches,
-        COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) as successful_launches,
-        (COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) * 100) / COUNT(*) AS success_rate
-    FROM rocket_data
-    GROUP BY day_of_week
-)
-SELECT 
-    day_of_week,
-    total_launches,
-    successful_launches,
-    success_rate
-FROM launch_stats
+SELECT
+        company_name,
+	COUNT(*) as launch_count,
+        SUM(CASE WHEN status_mission = 'Success' THEN 1 ELSE 0 END) AS successful_launches,
+        SUM(CASE WHEN status_mission = 'Failure' THEN 1 ELSE 0 END) AS failed_launches,
+	SUM(CASE WHEN status_mission = 'Partial Failure' THEN 1 ELSE 0 END) AS partial_failure,
+        SUM(CASE WHEN status_mission = 'Prelaunch Failure' THEN 1 ELSE 0 END) AS prelaunch_failure
+FROM
+        rocket_data
+GROUP BY
+	company_name
 ORDER BY 
-  CASE 
-    WHEN day_of_week = 'Sun' THEN 1
-    WHEN day_of_week = 'Mon' THEN 2
-    WHEN day_of_week = 'Tue' THEN 3
-    WHEN day_of_week = 'Wed' THEN 4
-    WHEN day_of_week = 'Thu' THEN 5
-    WHEN day_of_week = 'Fri' THEN 6
-    WHEN day_of_week = 'Sat' THEN 7
-  END;
+	launch_count DESC
+LIMIT 10;
 
 --  Results:
 
-day_of_week | total_launches | successful_launches | success_rate |
-------------------------------------------------------------------+
-Sun	    |		 270 |		       239 | 	       88 |
-Mon	    | 		 420 |		       374 |	       89 |
-Tue	    |	         743 |		       670 |	       90 |
-Wed	    |		 821 |		       752 |	       91 |
-Thu	    | 		 808 |		       728 |           90 |
-Fri	    | 		 772 |		       684 |	       88 |
-Sat	    |		 490 |		       432 |	       88 |
+company_name		| launch_count  | successful_launches | failed_launches | partial_failure | prelaunch_failure |
+----------------------------------------------------------------------------------------------------------------------+
+RVSN USSR		|	   1777 | 	        1614 |		    121 |	       41 |		    1 |
+Arianespace		|	    279 | 		 269 |		      7 |		3 |		    0 |	
+CASC			| 	    251 | 		 231 |		     14 |		6 |		    0 | 
+General Dynamics	|	    251 |		 203 | 	   	     37 |	       11 |		    0 |
+NASA			|	    203 | 		 186 | 	   	     11 |		6 |		    0 |
+VKS RF			| 	    201 | 		 188 |		      7 | 		6 |		    0 |
+US Air Force		|	    161 | 		 129 | 	   	     30 | 		2 |		    0 |
+ULA			|	    140 | 		 139 | 	   	      0 | 		1 |		    0 |
+Boeing			|	    136 | 		 131 | 	   	      3 | 		2 |		    0 |
+Martin Marietta		| 	    114	| 		 100 | 	   	     11 | 		3 |		    0 |
+
+-- During which years did the most launches occur?
+
+SELECT year,
+       COUNT(*) as mission_count
+FROM rocket_data
+GROUP BY year
+ORDER BY mission_count DESC
+LIMIT 10;
+
+year | mission_count
+---------------------+
+1971 |	 119
+2018 |	 117
+1977 | 	 114
+1976 |	 113
+1975 | 	 113
+2019 |   109
+1970 |	 107
+1967 | 	 106
+1969 |   103
+1973 | 	 103
+
+-- What month has the highest success rate?
+
+SELECT 
+        month,
+        COUNT(*) as total_launches,
+        COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) as successful_launches,
+        (COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) * 100) / COUNT(*) AS success_rate
+FROM rocket_data
+GROUP BY month
+ORDER by
+	CASE
+		WHEN month = 'Jan' THEN 1
+		WHEN month = 'Feb' THEN 2
+		WHEN month = 'Mar' THEN 3
+		WHEN month = 'Apr' THEN 4
+		WHEN month = 'May' THEN 5
+		WHEN month = 'Jun' THEN 6
+		WHEN month = 'Jul' THEN 7
+		WHEN month = 'Aug' THEN 8
+		WHEN month = 'Sep' THEN 9
+		WHEN month = 'Oct' THEN 10
+		WHEN month = 'Nov' THEN 11
+		WHEN month = 'Dec' THEN 12
+	END;
+
+--  Results:
+month | total_launches | successful_launches | success_rate |
+------------------------------------------------------------+
+Jan   |	     	   268 |		 241 |		 89 |
+Feb   |		   336 |		 299 |		 88 |
+Mar   |		   353 |		 322 |		 91 |
+Apr   |		   383 |		 344 |		 89 |
+May   |	   	   326 |		 295 |		 90 |
+Jun   |		   402 |		 356 |		 88 |
+Jul   |		   351 |	 	 315 |		 89 |
+Aug   |		   373 |		 331 |		 88 |
+Sep   |		   365 |		 327 |		 89 |
+Oct   |	 	   381 |		 346 |		 90 |
+Nov   |		   336 |		 299 |		 88 |
+Dec   |		   450 |		 404 |		 89 |
 
 --- What day of the month has the highest success rate?
 
@@ -256,4 +254,45 @@ day_of_month | total_launches | successful_launches | success_rate
 29	     |		  137 |			124 | 		90 |
 30	     |		  129 |			117 |		90 |
 31	     |		   66 |			 59 |		89 |
+
+
+--- What day of the week has the highest success rate? 
+
+WITH launch_stats AS (
+    SELECT 
+        day_of_week,
+        COUNT(*) as total_launches,
+        COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) as successful_launches,
+        (COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) * 100) / COUNT(*) AS success_rate
+    FROM rocket_data
+    GROUP BY day_of_week
+)
+SELECT 
+    day_of_week,
+    total_launches,
+    successful_launches,
+    success_rate
+FROM launch_stats
+ORDER BY 
+  CASE 
+    WHEN day_of_week = 'Sun' THEN 1
+    WHEN day_of_week = 'Mon' THEN 2
+    WHEN day_of_week = 'Tue' THEN 3
+    WHEN day_of_week = 'Wed' THEN 4
+    WHEN day_of_week = 'Thu' THEN 5
+    WHEN day_of_week = 'Fri' THEN 6
+    WHEN day_of_week = 'Sat' THEN 7
+  END;
+
+--  Results:
+
+day_of_week | total_launches | successful_launches | success_rate |
+------------------------------------------------------------------+
+Sun	    |		 270 |		       239 | 	       88 |
+Mon	    | 		 420 |		       374 |	       89 |
+Tue	    |	         743 |		       670 |	       90 |
+Wed	    |		 821 |		       752 |	       91 |
+Thu	    | 		 808 |		       728 |           90 |
+Fri	    | 		 772 |		       684 |	       88 |
+Sat	    |		 490 |		       432 |	       88 |
 
