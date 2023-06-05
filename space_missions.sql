@@ -36,7 +36,7 @@ year | mission_count
 /*
 note: this is where the rockets have been launched from, but the companies that are conducting these launches 
 may be from other countries ex. USSR being Russian owned, but launching in Kazakhstan, or Arianespace 
-being a French company launching in Kazakhstan as well (company collaboration).
+being a French company launching in Kazakhstan as well (company collaboration). 
 */ 
 
 SELECT country, COUNT(*) as rockets_launched
@@ -198,6 +198,18 @@ ORDER BY
     WHEN day_of_week = 'Sat' THEN 7
   END;
 
+--  Results:
+
+day_of_week | total_launches | successful_launches | success_rate |
+------------------------------------------------------------------+
+Sun	    |		 270 |		       239 | 	       88 |
+Mon	    | 		 420 |		       374 |	       89 |
+Tue	    |	         743 |		       670 |	       90 |
+Wed	    |		 821 |		       752 |	       91 |
+Thu	    | 		 808 |		       728 |           90 |
+Fri	    | 		 772 |		       684 |	       88 |
+Sat	    |		 490 |		       432 |	       88 |
+
 --- What day of the month has the highest success rate?
 
 SELECT 
@@ -209,6 +221,39 @@ FROM rocket_data
 GROUP BY day_of_month
 ORDER by day_of_month asc;
 
+--  Results:
 
-
+day_of_month | total_launches | successful_launches | success_rate
+-------------------------------------------------------------------+
+1	     |		  100 |		         84 |		84 |
+2	     | 		  119 | 		105 |		88 | 
+3	     |		  125 |			114 |		91 |
+4	     |		  133 |			110 |		82 | 
+5	     |		  154 |			137 |		88 |
+6	     |		  135 |			124 |		91 |
+7	     |		  114 |			111 |		97 |
+8	     |		  133 |			123 |		92 |
+9	     |		  117 |			105 |		89 | 
+10	     |		  129 |			117 |		90 |
+11	     |		  145 |			133 |		91 |
+12	     | 		  163 |			149 |	 	91 |
+13	     | 		  101 |			 93 |		92 |
+14	     |		  140 |			131 |		93 |
+15	     |		  147 |			133 |		90 |
+16	     |		  145 |			133 |		91 |
+17	     |		  149 |			137 |		91 |
+18	     |		  154 |			142 |		92 |
+19	     |		  141 |			133 |		94 | 
+20	     |		  155 |			140 |		90 |
+21	     |		  167 |			145 |		86 |
+22	     |		  158 |			131 |		82 | 
+23	     |		  142 |			127 |		89 |
+24	     |		  173 |			159 |		91 |
+25	     |		  175 |			148 |		84 |
+26	     |		  139 |			118 |		84 |
+27	     | 		  152 |			129 |		84 |
+28	     |		  187 |			168 |		89 |
+29	     |		  137 |			124 | 		90 |
+30	     |		  129 |			117 |		90 |
+31	     |		   66 |			 59 |		89 |
 
