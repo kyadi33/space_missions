@@ -183,9 +183,9 @@ WITH launch_data AS (
 		decade_range
 	)
 SELECT
-	decade_range,
 	row_num,
 	company_name,
+	decade_range,
 	successful_launches
 FROM (
 	SELECT
@@ -206,23 +206,23 @@ ORDER by
 
 --  Results:
 
-decade_range | row_num |	company_name | successful_launches |
--------------------------------------------------------------------+
-1957-1969    |	     1 |           RVSN USSR |		       360 |
-1957-1969    |	     2 |        US Air Force |		       101 |
-1957-1969    |       3 |    General Dynamics |		       101 |
-1957-1969    |	     4 |	        NASA |		        42 |
-1957-1969    |	     5 |     Martin Marietta |		        10 |
-1970-1999    |	     1 |	   RVSN USSR |		      1254 |
-1970-1999    |	     2 |         Arianespace |		       108 |
-1970-1999    |	     3 |	        NASA |		       105 |
-1970-1999    |	     4 |    General Dynamics |		       102 |
-1970-1999    |       5 |	      VKS RF |		        99 |
-2000-2020    |	     1 |	        CASC |		       173 |
-2000-2020    |	     2 |         Arianespace |		       161 |
-2000-2020    |	     3 |                 ULA |		       139 |
-2000-2020    |	     4 |              SpaceX |		        94 |
-2000-2020    |	     5 |              VKS RF |		        89 |
+row_num |      company_name | decade_range | successful_launches |
+-----------------------------------------------------------------+
+      1 |         RVSN USSR |	 1957-1969 |	             360 |
+      2 |      US Air Force |    1957-1969 |	             101 |
+      3 |  General Dynamics |	 1957-1969 |	             101 |
+      4 | 	       NASA |	 1957-1969 |	              42 |
+      5 |   Martin Marietta |	 1957-1969 |	              10 |
+      1 |	  RVSN USSR |	 1970-1999 |	            1254 | 
+      2 |	Arianespace |	 1970-1999 |	             108 |
+      3 |	       NASA |	 1970-1999 |	             105 |
+      4 |  General Dynamics |	 1970-1999 |	             102 | 
+      5 |	     VKS RF |	 1970-1999 |	              99 |
+      1 |	       CASC |	 2000-2020 |	             173 |
+      2 |	Arianespace |	 2000-2020 |	             161 |
+      3 |	        ULA |	 2000-2020 |	             139 |
+      4 |	     SpaceX |	 2000-2020 |	              94 |
+      5 |	     VKS RF |	 2000-2020 |	              89 |
 
 
 -- What month has the highest success rate?
