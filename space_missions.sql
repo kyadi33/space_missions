@@ -205,27 +205,31 @@ SpaceX	     |		   38 |  	    62 |	       100 | 			  38 |
 MHI	     | 		   32 |	            52 | 		84 | 			  38 |
 VKS RF	     |		   27 |  	   174 |	       201 | 			  13 |
 
--- What year has the highest success rate?
+-- What years have the highest success rates?
 
 SELECT year,
-       COUNT(*) as mission_count
+       COUNT(*) as mission_count,
+	   COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) AS successful_launches,
+       (COUNT(CASE WHEN status_mission = 'Success' THEN 1 END) * 100) / COUNT(*) AS success_rate
 FROM rocket_data
 GROUP BY year
-ORDER BY mission_count DESC
+ORDER BY success_rate DESC, mission_count DESC
 LIMIT 10;
 
-year | mission_count
----------------------+
-1971 |	 119
-2018 |	 117
-1977 | 	 114
-1976 |	 113
-1975 | 	 113
-2019 |   109
-1970 |	 107
-1967 | 	 106
-1969 |   103
-1973 | 	 103
+--  Results:
+
+year | mission_count | successful_launches | success_rate |
+----------------------------------------------------------+
+1983 |		  66 |			65 |	       98 |
+2018 |		 117 |		       113 |	       96 |
+1977 |		 114 |		       110 |	       96 |
+1978 |		  97 |			94 |	       96 |
+1988 |		  59 |			57 |	       96 |
+2014 |		  53 |			51 |	       96 |
+1989 |		  52 |			50 |	       96 |
+1976 |	 	 113 |		       108 |	       95 |
+2016 |		  90 |			86 |	       95 |
+1990 |		  80 |			76 |	       95 |
 
 
 -- What month has the highest success rate?
@@ -357,4 +361,32 @@ Thu	    | 		 808 |		       728 |           90 |
 Fri	    | 		 772 |		       684 |	       88 |
 Sat	    |		 490 |		       432 |	       88 |
 
+
+/*
+  To optimize probability of success, not accounting for 1983 being the most successful year in terms of rocket launches, or external factors such as weather,
+  Wednesday March 07 may be the luckiest day to launch a rocket.
+  What were the mission status' for rockets launched on March 07 ? 
+*/
+
+SELECT company_name, 
+	country, 
+	day_of_week, 
+	month, 
+	day_of_month, 
+	year, 
+	UTC, 
+	status_mission
+FROM rocket_data
+WHERE month = 'Mar' AND day_of_month = '7'
+ORDER BY year;
+
+company_name     |    country | day_of_week | month | day_of_month | 	year |	    utc | status_mission |
+---------------------------------------------------------------------------------------------------------+
+US Air Force     |        USA |		Wed |	Mar |		7 |	1962 |	4:06 PM |	 Success |
+General Dynamics |        USA | 	Wed |	Mar |		7 |	1962 | 10:10 PM	|	 Success |
+RVSN USSR        | Kazakhstan |		Sun |	Mar |		7 |	1965 |	8:59 AM |	 Success |
+CASC	         |      China | 	Mon |	Mar |		7 |	1988 | 12:41 PM	| 	 Success |
+ULA	         |	  USA |		Sat |	Mar |		7 |	2009 |  3:49 AM	|	 Success |
+Arianespace      |     France |		Tue |	Mar |		7 |	2017 |  1:49 AM	|	 Success |
+SpaceX	         |	  USA |		Sat |	Mar |		7 |	2020 |	4:50 AM	|	 Success |
 
