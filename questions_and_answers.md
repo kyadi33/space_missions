@@ -8,10 +8,12 @@
 
 ### How many rocket launches occurred between 1957 - 2020
 
+'''' sql
 SELECT COUNT(id) as launch_count
 FROM rocket_data;
+''''
 
---  Results:
+**Results:**
 
 launch_count |
 -------------+
