@@ -33,7 +33,7 @@ ORDER BY rockets_launched desc;
 --  Results:
 
 country 	  | rockets_launched |
--------------------------------|
+------------|------------------|
 Russia		  |             1398 |
 USA		      |             1385 |
 Kazakhstan 	|              701 |
