@@ -9,5 +9,5 @@ This dataset contains a wealth of information on rocket launches from the beginn
 By exploring this dataset and analyzing the success rates of companies, the contributions of countries, and the optimal timing of launches, we can make more informed decisions, mitigate risks, and increase the chances of success in future space endeavors.
 
 * [SQL Queries](https://github.com/kyadi33/space_missions/blob/main/space_missions.sql)
-* [SQL Analysis Questions & Answers](https://github.com/kyadi33/space_missions/blob/main/questions_and_answers.md)
+* [Analysis Questions & Answers](https://github.com/kyadi33/space_missions/blob/main/questions_and_answers.md)
 
