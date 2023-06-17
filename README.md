@@ -1,7 +1,7 @@
-#Space Race Data Exploration
+# Space Race Data Exploration
 An SQL analysis of reported rocket launches from the beginning of the Space Race in 1957 - 2020. 
 
-##Introduction
+## Introduction
 
 Welcome to the Space Race Data Analysis project! 🚀 This project is a testament to my deep passion for space exploration and the boundless opportunities it offers humanity. As I delve into the dataset and leverage the power of PostgreSQL, my aim is to uncover valuable insights that will contribute to the success of future space missions.
 
