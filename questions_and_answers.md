@@ -3,7 +3,7 @@
 
 **Author**: Yadira Ocampo
 
-**Email** yadira.ocampo33@gmail.com
+**Email**: yadira.ocampo33@gmail.com
 
 
 #### How many rocket launches occurred between 1957 - 2020
