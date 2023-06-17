@@ -32,24 +32,25 @@ ORDER BY rockets_launched desc;
 
 --  Results:
 
-country 	  | rockets_launched |
-------------|------------------|
-Russia		  |             1398 |
-USA		      |             1385 |
-Kazakhstan 	|              701 |
-France		  |              303 |
-China		    |              269 |
-Japan		    |              126 |
-India	    	|               76 |
-Iran		    |               14 |
-New Zealand	|               13 |
-Israel		  |               11 |
-Kenya		    |                9 |
-Australia	  |                6 |
-North Korea	|                5 | 
-South Korea	|                3 | 
-Brazil		  |                3 |
-Spain		    |                2 | 
+|   country   | rockets_launched |
+|-------------|------------------|
+|   Russia    |       1398       |
+|     USA     |       1385       |
+| Kazakhstan  |        701       |
+|   France    |        303       |
+|    China    |        269       |
+|    Japan    |        126       |
+|    India    |        76        |
+|     Iran    |        14        |
+| New Zealand |        13        |
+|   Israel    |        11        |
+|    Kenya    |         9        |
+|  Australia  |         6        |
+| North Korea |         5        |
+| South Korea |         3        |
+|   Brazil    |         3        |
+|    Spain    |         2        |
+
 
 Russia and the US are the initiators of the space race and also those with the highest amount of launches historically. They remain the countries to watch for future space exploration.
 
@@ -94,24 +95,23 @@ ORDER by
  ````
 -- Results:
 
-row_num |      company_name | decade_range | successful_launches |
------------------------------------------------------------------|
-      1 |         RVSN USSR |	   1957-1969 |	               360 |
-      2 |      US Air Force |    1957-1969 |	               101 |
-      3 |  General Dynamics |	   1957-1969 |	               101 |
-      4 | 	           NASA |	   1957-1969 |	                42 |
-      5 |   Martin Marietta |	   1957-1969 |	                10 |
-      1 |	        RVSN USSR |	   1970-1999 |	              1254 | 
-      2 |	      Arianespace |	   1970-1999 |	               108 |
-      3 |	             NASA |	   1970-1999 |	               105 |
-      4 |  General Dynamics |	   1970-1999 |	               102 | 
-      5 |	           VKS RF |	   1970-1999 |	                99 |
-      1 |	             CASC |	   2000-2020 |	               173 |
-      2 |	      Arianespace |	   2000-2020 |	               161 |
-      3 |	              ULA |	   2000-2020 |	               139 |
-      4 |	           SpaceX |	   2000-2020 |	                94 |
-      5 |	           VKS RF |	   2000-2020 |	                89 |
-
+| row_num |   company_name   | decade_range | successful_launches |
+|---------|------------------|--------------|---------------------|
+|    1    |    RVSN USSR     |  1957-1969   |         360         |
+|    2    |  US Air Force    |  1957-1969   |         101         |
+|    3    | General Dynamics |  1957-1969   |         101         |
+|    4    |       NASA       |  1957-1969   |         42          |
+|    5    |  Martin Marietta |  1957-1969   |         10          |
+|    1    |    RVSN USSR     |  1970-1999   |        1254         |
+|    2    |    Arianespace   |  1970-1999   |         108         |
+|    3    |       NASA       |  1970-1999   |         105         |
+|    4    | General Dynamics |  1970-1999   |         102         |
+|    5    |      VKS RF      |  1970-1999   |         99          |
+|    1    |       CASC       |  2000-2020   |         173         |
+|    2    |    Arianespace   |  2000-2020   |         161         |
+|    3    |       ULA        |  2000-2020   |         139         |
+|    4    |      SpaceX      |  2000-2020   |         94          |
+|    5    |      VKS RF      |  2000-2020   |         89          |
 
 
 #### What are the top 10 companies with the most successful launches overall? What are their success rates?
@@ -134,18 +134,19 @@ LIMIT 10;
 
 -- Results:
 
-  company_name	 | countries_launched_from | total_launches | successful_launches |  success_rate |
---------------------------------------------------------------------------------------------------|
-       RVSN USSR | 	    Kazakhstan, Russia |	         1777 |		             1614 | 	         90 |
-     Arianespace |	    France, Kazakhstan |		        279 |		              269 |	           96 |
-            CASC | 		               China |		        251 |		              231 |	           92 |
-General Dynamics |		                 USA |		        251 | 		            203 |	           80 |
-          VKS RF | 	    Kazakhstan, Russia |		        201 |		              188 |	           93 |
-            NASA |		                 USA |		        203 |		              186 |	           91 |
-             ULA | 		                 USA |		        140 | 		            139 |    	       99 |
-          Boeing | 		                 USA | 		        136 |		              131 | 	         96 |
-    US Air Force |		                 USA |		        161 |		              129 |	           80 |
-Martin Marietta	 |		                 USA | 		        114 |		              100 |	           87 |
+|   company_name   | countries_launched_from | total_launches | successful_launches | success_rate |
+|------------------|-------------------------|----------------|---------------------|--------------|
+|   RVSN USSR      |  Kazakhstan, Russia     |      1777      |         1614        |      90      |
+|   Arianespace    |  France, Kazakhstan     |       279      |         269         |      96      |
+|      CASC        |         China           |       251      |         231         |      92      |
+| General Dynamics |          USA            |       251      |         203         |      80      |
+|     VKS RF       |  Kazakhstan, Russia     |       201      |         188         |      93      |
+|      NASA        |          USA            |       203      |         186         |      91      |
+|       ULA        |          USA            |       140      |         139         |      99      |
+|      Boeing      |          USA            |       136      |         131         |      96      |
+|  US Air Force    |          USA            |       161      |         129         |      80      |
+| Martin Marietta  |          USA            |       114      |         100         |      87      |
+
 
 #### How many successful, failed, partial failure, and prelaunch failures does each company have recorded?
 
@@ -170,18 +171,19 @@ LIMIT 10;
 ````
 -- Results:
 
-    company_name | launch_count  | successful_launches | failed_launches | partial_failure | prelaunch_failure |
----------------------------------------------------------------------------------------------------------------|
-       RVSN USSR |	        1777 | 	              1614 |		         121 |	            41 |		             1 |
-     Arianespace |	         279 | 		             269 |		           7 |		           3 |		             0 |	
-            CASC | 	         251 | 		             231 |		          14 |		           6 |		             0 | 
-General Dynamics |	         251 |		             203 | 	   	        37 |	            11 |		             0 |
-            NASA |	         203 | 		             186 | 	   	        11 |		           6 |		             0 |
-          VKS RF | 	         201 | 		             188 |		           7 | 		           6 |		             0 |
-    US Air Force |	         161 | 		             129 | 	   	        30 | 		           2 |		             0 |
-             ULA |	         140 | 		             139 | 	   	         0 | 		           1 |		             0 |
-          Boeing |	         136 | 		             131 | 	   	         3 | 		           2 |		             0 |
- Martin Marietta | 	         114 | 	          	   100 | 	   	        11 | 		           3 |		             0 |
+|   company_name   | launch_count | successful_launches | failed_launches | partial_failure | prelaunch_failure |
+|------------------|--------------|---------------------|-----------------|-----------------|-------------------|
+|   RVSN USSR      |     1777     |        1614         |       121       |        41       |         1         |
+|   Arianespace    |      279     |         269         |        7        |        3        |         0         |
+|      CASC        |      251     |         231         |       14        |        6        |         0         |
+| General Dynamics |      251     |         203         |       37        |       11        |         0         |
+|      NASA        |      203     |         186         |       11        |        6        |         0         |
+|     VKS RF       |      201     |         188         |        7        |        6        |         0         |
+|  US Air Force    |      161     |         129         |       30        |        2        |         0         |
+|       ULA        |      140     |         139         |        0        |        1        |         0         |
+|      Boeing      |      136     |         131         |        3        |        2        |         0         |
+| Martin Marietta  |      114     |         100         |       11        |        3        |         0         |
+
 
  #### What are the top 10 companies with the most active rockets?
 
@@ -210,18 +212,19 @@ ORDER BY active_rocket_percentage DESC;
 
 -- Results:
 
-company_name | active_rockets | retired_rockets | rockets_launched | active_rocket_percentage |
--------------|----------------|-----------------|------------------|--------------------------|
-  Sea Launch |		         36 |		            0 |		            36 |			                100 |
-        CASC | 		        211 |              40 |	             251 |			                 84 |
-    Northrop | 		         63 |              20 |		            83 |			                 75 |
-        ISRO |		         50 | 	           26 |		            76 | 			                 65 |
-         ULA |		         87 |	             53 |	             140 | 			                 62 |
-   Roscosmos | 		         32 |	             23 | 		          55 |			                 58 |
- Arianespace | 		        114 |	            165 | 	           279 |		 	                 40 |
-      SpaceX |		         38 |  	           62 |	             100 | 			                 38 |
-         MHI | 		         32 |	             52 | 		          84 | 			                 38 |
-      VKS RF |		         27 |  	          174 |	             201 | 			                 13 |
+|  company_name | active_rockets | retired_rockets | rockets_launched | active_rocket_percentage |
+|---------------|----------------|-----------------|------------------|-------------------------|
+|   Sea Launch  |       36       |        0        |        36        |           100           |
+|      CASC     |      211       |        40       |       251        |           84            |
+|    Northrop   |       63       |        20       |        83        |           75            |
+|      ISRO     |       50       |        26       |        76        |           65            |
+|      ULA      |       87       |        53       |       140        |           62            |
+|   Roscosmos   |       32       |        23       |        55        |           58            |
+|  Arianespace  |      114       |       165       |       279        |           40            |
+|     SpaceX    |       38       |       62        |       100        |           38            |
+|      MHI      |       32       |       52        |        84        |           38            |
+|     VKS RF    |       27       |      174        |       201        |           13            |
+
 
 #### What years have the highest success rates?
 
@@ -237,19 +240,19 @@ LIMIT 10;
 ````
 
 -- Results:
+|  year | mission_count | successful_launches | success_rate |
+|-------|---------------|---------------------|--------------|
+|  1983 |      66       |         65          |      98      |
+|  2018 |     117       |        113          |      96      |
+|  1977 |     114       |        110          |      96      |
+|  1978 |      97       |         94          |      96      |
+|  1988 |      59       |         57          |      96      |
+|  2014 |      53       |         51          |      96      |
+|  1989 |      52       |         50          |      96      |
+|  1976 |     113       |        108          |      95      |
+|  2016 |      90       |         86          |      95      |
+|  1990 |      80       |         76          |      95      |
 
-year | mission_count | successful_launches | success_rate |
------|---------------|---------------------|--------------|
-1983 |		        66 |			            65 |	         98 |
-2018 |		       117 |		             113 |	         96 |
-1977 |		       114 |		             110 |	         96 |
-1978 |		        97 |			            94 |	         96 |
-1988 |		        59 |			            57 |	         96 |
-2014 |		        53 |			            51 |	         96 |
-1989 |		        52 |			            50 |	         96 |
-1976 |	 	       113 |		             108 |	         95 |
-2016 |		        90 |			            86 |	         95 |
-1990 |		        80 |			            76 |	         95 |
 
 #### What month has the highest success rate?
 
@@ -280,20 +283,21 @@ ORDER by
 
 -- Results:
 
-month | total_launches | successful_launches | success_rate |
-------------------------------------------------------------|
-Jan   |	     	     268 |		             241 |		       89 |
-Feb   |		         336 |		             299 |		       88 |
-Mar   |		         353 |		             322 |		       91 |
-Apr   |		         383 |		             344 |		       89 |
-May   |	   	       326 |		             295 |		       90 |
-Jun   |		         402 |		             356 |		       88 |
-Jul   |		         351 |	 	             315 |		       89 |
-Aug   |		         373 |		             331 |		       88 |
-Sep   |		         365 |		             327 |		       89 |
-Oct   |	 	         381 |		             346 |		       90 |
-Nov   |		         336 |		             299 |		       88 |
-Dec   |		         450 |		             404 |		       89 |
+| month | total_launches | successful_launches | success_rate |
+|-------|----------------|---------------------|--------------|
+|  Jan  |      268       |         241         |      89      |
+|  Feb  |      336       |         299         |      88      |
+|  Mar  |      353       |         322         |      91      |
+|  Apr  |      383       |         344         |      89      |
+|  May  |      326       |         295         |      90      |
+|  Jun  |      402       |         356         |      88      |
+|  Jul  |      351       |         315         |      89      |
+|  Aug  |      373       |         331         |      88      |
+|  Sep  |      365       |         327         |      89      |
+|  Oct  |      381       |         346         |      90      |
+|  Nov  |      336       |         299         |      88      |
+|  Dec  |      450       |         404         |      89      |
+
 
 #### What day of the month has the highest success rate?
 
@@ -309,40 +313,39 @@ ORDER by day_of_month asc;
 ````
 
 -- Results:
-
-day_of_month | total_launches | successful_launches | success_rate |
--------------------------------------------------------------------|
-           1 |		        100 |		               84 |		        84 |
-           2 | 		        119 | 		            105 |		        88 | 
-           3 |		        125 |			            114 |		        91 |
-           4 |		        133 |		            	110 |		        82 | 
-           5 |		        154 |			            137 |		        88 |
-           6 |		        135 |			            124 |		        91 |
-           7 |		        114 |			            111 |		        97 |
-           8 |		        133 |			            123 |	        	92 |
-           9 |		        117 |			            105 |		        89 | 
-          10 |		        129 |		            	117 |		        90 |
-          11 |		        145 |			            133 |		        91 |
-          12 | 		        163 |			            149 |	 	        91 |
-          13 | 		        101 |			             93 |		        92 |
-          14 |		        140 |			            131 |		        93 |
-          15 |		        147 |			            133 |		        90 |
-          16 |		        145 |			            133 |		        91 |
-          17 |		        149 |			            137 |		        91 |
-          18 |		        154 |			            142 |		        92 |
-          19 |		        141 |			            133 |		        94 | 
-          20 |		        155 |			            140 |		        90 |
-          21 |		        167 |			            145 |		        86 |
-          22 |		        158 |			            131 |		        82 | 
-          23 |		        142 |			            127 |		        89 |
-          24 |		        173 |			            159 |		        91 |
-          25 |		        175 |			            148 |		        84 |
-          26 |		        139 |			            118 |		        84 |
-          27 | 		        152 |			            129 |		        84 |
-          28 |		        187 |			            168 |		        89 |
-          29 |		        137 |			            124 | 		      90 |
-          30 |		        129 |		            	117 |		        90 |
-          31 |		         66 |			             59 |		        89 |
+| day_of_month | total_launches | successful_launches | success_rate |
+|--------------|----------------|---------------------|--------------|
+|      1       |      100       |         84          |      84      |
+|      2       |      119       |         105         |      88      |
+|      3       |      125       |         114         |      91      |
+|      4       |      133       |         110         |      82      |
+|      5       |      154       |         137         |      88      |
+|      6       |      135       |         124         |      91      |
+|      7       |      114       |         111         |      97      |
+|      8       |      133       |         123         |      92      |
+|      9       |      117       |         105         |      89      |
+|     10       |      129       |         117         |      90      |
+|     11       |      145       |         133         |      91      |
+|     12       |      163       |         149         |      91      |
+|     13       |      101       |         93          |      92      |
+|     14       |      140       |         131         |      93      |
+|     15       |      147       |         133         |      90      |
+|     16       |      145       |         133         |      91      |
+|     17       |      149       |         137         |      91      |
+|     18       |      154       |         142         |      92      |
+|     19       |      141       |         133         |      94      |
+|     20       |      155       |         140         |      90      |
+|     21       |      167       |         145         |      86      |
+|     22       |      158       |         131         |      82      |
+|     23       |      142       |         127         |      89      |
+|     24       |      173       |         159         |      91      |
+|     25       |      175       |         148         |      84      |
+|     26       |      139       |         118         |      84      |
+|     27       |      152       |         129         |      84      |
+|     28       |      187       |         168         |      89      |
+|     29       |      137       |         124         |      90      |
+|     30       |      129       |         117         |      90      |
+|     31       |      66        |         59          |      89      |
 
 #### What day of the week has the highest success rate?
 
@@ -376,13 +379,38 @@ ORDER BY
 
 -- Results:
 
-day_of_week | total_launches | successful_launches | success_rate |
-------------------------------------------------------------------+
-        Sun |		 270 |		       239 | 	       88 |
-        Mon | 		 420 |		       374 |	       89 |
-        Tue	|	         743 |		       670 |	       90 |
-Wed	    |		 821 |		       752 |	       91 |
-Thu	    | 		 808 |		       728 |           90 |
-Fri	    | 		 772 |		       684 |	       88 |
-Sat	    |		 490 |		       432 |	       88 |
+| day_of_week | total_launches | successful_launches | success_rate |
+|-------------|----------------|---------------------|--------------|
+|    Sun      |      270       |         239         |      88      |
+|    Mon      |      420       |         374         |      89      |
+|    Tue      |      743       |         670         |      90      |
+|    Wed      |      821       |         752         |      91      |
+|    Thu      |      808       |         728         |      90      |
+|    Fri      |      772       |         684         |      88      |
+|    Sat      |      490       |         432         |      88      |
 
+To optimize probability of success, not accounting for 1983 being the most successful year in terms of rocket launches, or external factors such as weather, Wednesday March 07 may be the luckiest day to launch a rocket.
+What were the mission status' for rockets launched on March 07 ? 
+
+````sql
+SELECT company_name, 
+	country, 
+	day_of_week, 
+	month, 
+	day_of_month, 
+	year, 
+	UTC, 
+	status_mission
+FROM rocket_data
+WHERE month = 'Mar' AND day_of_month = '7'
+ORDER BY year;
+````
+|   company_name   |   country   | day_of_week | month | day_of_month |  year |   utc   | status_mission |
+|------------------|-------------|-------------|-------|--------------|-------|---------|----------------|
+| US Air Force     |    USA      |     Wed     |  Mar  |      7       | 1962  | 4:06 PM |    Success     |
+| General Dynamics |    USA      |     Wed     |  Mar  |      7       | 1962  | 10:10 PM|    Success     |
+| RVSN USSR        | Kazakhstan |     Sun     |  Mar  |      7       | 1965  | 8:59 AM |    Success     |
+| CASC             |    China    |     Mon     |  Mar  |      7       | 1988  | 12:41 PM|    Success     |
+| ULA              |    USA      |     Sat     |  Mar  |      7       | 2009  | 3:49 AM |    Success     |
+| Arianespace      |   France    |     Tue     |  Mar  |      7       | 2017  | 1:49 AM |    Success     |
+| SpaceX           |    USA      |     Sat     |  Mar  |      7       | 2020  | 4:50 AM |    Success     |
