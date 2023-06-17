@@ -30,7 +30,7 @@ GROUP BY country
 ORDER BY rockets_launched desc;
 ```
 
---  Results:
+**Results**:
 
 |   country   | rockets_launched |
 |-------------|------------------|
@@ -52,7 +52,7 @@ ORDER BY rockets_launched desc;
 |    Spain    |         2        |
 
 
-Russia and the US are the initiators of the space race and also those with the highest amount of launches historically. They remain the countries to watch for future space exploration.
+The Space Race primarily took place between the United States and the Soviet Union during the Cold War, these two countries were the main contenders and leaders in space exploration and continue to be the countries to watch for future space exploration as they have significantly more launches than other countries.
 
 #### What 5 companies had the most successful launches in each of these ranges: 1957 - 1969, 1970 - 1999, and 2000-2020
 
@@ -93,7 +93,7 @@ ORDER by
 	END,
 	successful_launches desc;
  ````
--- Results:
+**Results**:
 
 | row_num |   company_name   | decade_range | successful_launches |
 |---------|------------------|--------------|---------------------|
@@ -132,7 +132,7 @@ ORDER BY
 LIMIT 10;
 ````
 
--- Results:
+**Results**:
 
 |   company_name   | countries_launched_from | total_launches | successful_launches | success_rate |
 |------------------|-------------------------|----------------|---------------------|--------------|
@@ -147,6 +147,8 @@ LIMIT 10;
 |  US Air Force    |          USA            |       161      |         129         |      80      |
 | Martin Marietta  |          USA            |       114      |         100         |      87      |
 
+
+In terms of companies Russia and the US continue to lead as having the highest success rates, with ULA at a 99% success rate. 
 
 #### How many successful, failed, partial failure, and prelaunch failures does each company have recorded?
 
@@ -169,7 +171,7 @@ ORDER BY
 	launch_count DESC
 LIMIT 10;
 ````
--- Results:
+**Results**:
 
 |   company_name   | launch_count | successful_launches | failed_launches | partial_failure | prelaunch_failure |
 |------------------|--------------|---------------------|-----------------|-----------------|-------------------|
@@ -210,7 +212,7 @@ FROM current_status
 ORDER BY active_rocket_percentage DESC;
 ````
 
--- Results:
+**Results**:
 
 |  company_name | active_rockets | retired_rockets | rockets_launched | active_rocket_percentage |
 |---------------|----------------|-----------------|------------------|-------------------------|
@@ -238,8 +240,8 @@ GROUP BY year
 ORDER BY success_rate DESC, mission_count DESC
 LIMIT 10;
 ````
+**Results**:
 
--- Results:
 |  year | mission_count | successful_launches | success_rate |
 |-------|---------------|---------------------|--------------|
 |  1983 |      66       |         65          |      98      |
@@ -281,7 +283,7 @@ ORDER by
 	END;
 ````
 
--- Results:
+**Results**:
 
 | month | total_launches | successful_launches | success_rate |
 |-------|----------------|---------------------|--------------|
@@ -312,7 +314,8 @@ GROUP BY day_of_month
 ORDER by day_of_month asc;
 ````
 
--- Results:
+**Results**:
+
 | day_of_month | total_launches | successful_launches | success_rate |
 |--------------|----------------|---------------------|--------------|
 |      1       |      100       |         84          |      84      |
@@ -377,7 +380,7 @@ ORDER BY
   END;
 ````
 
--- Results:
+**Results**:
 
 | day_of_week | total_launches | successful_launches | success_rate |
 |-------------|----------------|---------------------|--------------|
@@ -405,6 +408,8 @@ FROM rocket_data
 WHERE month = 'Mar' AND day_of_month = '7'
 ORDER BY year;
 ````
+**Results**:
+
 |   company_name   |   country   | day_of_week | month | day_of_month |  year |   utc   | status_mission |
 |------------------|-------------|-------------|-------|--------------|-------|---------|----------------|
 | US Air Force     |    USA      |     Wed     |  Mar  |      7       | 1962  | 4:06 PM |    Success     |
