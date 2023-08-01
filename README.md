@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the Space Race Data Analysis project! 🚀 This project is a testament to my deep passion for space exploration and the boundless opportunities it offers humanity. As I delve into the dataset and leverage the power of PostgreSQL, my aim is to uncover valuable insights that will contribute to the success of future space missions.
+Welcome to the Space Race Data Analysis project! 🚀 This project is a testament to my deep passion for space exploration and the boundless opportunities it offers humanity. As I delve into the dataset and leverage the power of PostgreSQL, my aim is to uncover valuable insights regarding trends in launch success rates as well as country contribution changes over time. 
 
 This dataset contains a wealth of information on rocket launches from the beginning of the space race in 1957 to 2020. It includes essential details such as company names, launch locations, dates and times, rocket statuses, and mission outcomes (success, partial failure, prelaunch failure, failure).
 
